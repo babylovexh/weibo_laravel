@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', 'StaticPagesController@home')->name('home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
@@ -34,6 +38,6 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
-// Auth::routes();
+Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
 
-// Route::get('/home', 'HomeController@index')->name('home');
+
